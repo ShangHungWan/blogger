@@ -5,17 +5,24 @@
   
 
   
-  <title>Sun 的學習筆記</title>
+  <title>ERC-20 Token Standard 簡介 | Sun 的學習筆記</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="紀錄學習與開發過程的研究議題及技術文章">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sun 的學習筆記">
-<meta property="og:url" content="https://a24230928.github.io/blogger/">
+  <meta name="description" content="ERC-20 與 ERC-721 比較 簡單來說，ERC20是「每個代幣都一樣」；而ERC721則是「每個代幣都有其獨特性」 Interface1234567891011contract ERC20Interface &amp;#123;    function totalSupply() public constant returns (uint);    function balanceOf(addr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ERC-20 Token Standard 簡介">
+<meta property="og:url" content="https://a24230928.github.io/blogger/2020/05/11/ERC-20-Token-Standard-%E7%B0%A1%E4%BB%8B/">
 <meta property="og:site_name" content="Sun 的學習筆記">
-<meta property="og:description" content="紀錄學習與開發過程的研究議題及技術文章">
+<meta property="og:description" content="ERC-20 與 ERC-721 比較 簡單來說，ERC20是「每個代幣都一樣」；而ERC721則是「每個代幣都有其獨特性」 Interface1234567891011contract ERC20Interface &amp;#123;    function totalSupply() public constant returns (uint);    function balanceOf(addr">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/yJRa1ri.png">
+<meta property="article:published_time" content="2020-05-11T01:33:25.000Z">
+<meta property="article:modified_time" content="2021-09-05T06:17:36.335Z">
 <meta property="article:author" content="Sun">
+<meta property="article:tag" content="ERC-20">
+<meta property="article:tag" content="ERC-721">
+<meta property="article:tag" content="Solidity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/yJRa1ri.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -64,83 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-EOS-Jungle2-0-Testnet-with-Scatter-Desktop" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blogger/2020/05/11/EOS-Jungle2-0-Testnet-with-Scatter-Desktop/" class="article-date">
-  <time datetime="2020-05-11T01:38:04.000Z" itemprop="datePublished">2020-05-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blogger/2020/05/11/EOS-Jungle2-0-Testnet-with-Scatter-Desktop/">EOS Jungle2.0 Testnet With Scatter Desktop</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此篇旨在紀錄筆者透過 Scatter 桌面版使用 Jungle2.0 Testnet的過程及教學</p>
-<h2 id="Generate-key"><a href="#Generate-key" class="headerlink" title="Generate key"></a>Generate key</h2><ol>
-<li><p>打開Scatter，並點選 Wallet &gt; Generate Key<br><img src="https://i.imgur.com/oKJ3yeP.png" alt=""></p>
-</li>
-<li><p>選擇 EOSIO<br><img src="https://i.imgur.com/lueA2wS.png" alt=""></p>
-</li>
-<li><p>選擇 Key<br><img src="https://i.imgur.com/FXg23Rp.png" alt=""></p>
-</li>
-<li><p>此時 Scatter 即會幫你生成一個 Private Key，請自行保管好<br><img src="https://i.imgur.com/aUjkbB5.png" alt=""></p>
-</li>
-<li><p>按 Back 回到 Wallet的頁面 (步驟1.)，並將紅色框框中的 Public Key 複製下來<br><img src="https://i.imgur.com/bgycJfo.png" alt=""></p>
-</li>
-</ol>
-<h2 id="Create-an-account"><a href="#Create-an-account" class="headerlink" title="Create an account"></a>Create an account</h2><ol>
-<li><p><a href="https://monitor.jungletestnet.io/#account" target="_blank" rel="noopener">點此</a>註冊一個帳號</p>
-</li>
-<li><p>輸入 Account name，並將剛才的 Public Key 貼上在下面兩個欄位<br><img src="https://i.imgur.com/GLgU91k.png" alt=""></p>
-</li>
-</ol>
-<h2 id="Get-Free-Tokens"><a href="#Get-Free-Tokens" class="headerlink" title="Get Free Tokens"></a>Get Free Tokens</h2><ol>
-<li><a href="http://monitor.jungletestnet.io/#faucet" target="_blank" rel="noopener">點此</a>並輸入剛才的帳號名稱，就可以獲得 1 Token</li>
-</ol>
-<h2 id="Add-Jungle-2-Network-in-Scatter"><a href="#Add-Jungle-2-Network-in-Scatter" class="headerlink" title="Add Jungle 2 Network in Scatter"></a>Add Jungle 2 Network in Scatter</h2><ol>
-<li><p>回到 Scatter，並點選 Networks &gt; Add Custom Network<br><img src="https://i.imgur.com/NLKUF1I.png" alt=""></p>
-</li>
-<li><ul>
-<li>Name 中輸入一個可辨識的名稱</li>
-<li>Host 輸入 jungle2.cryptolions.io</li>
-<li>Protocol 為 https</li>
-<li>Port 為 443</li>
-<li>Chain ID 為 e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473<br>最後按下 Add 即可<br><img src="https://i.imgur.com/oUufXBu.png" alt=""></li>
-</ul>
-</li>
-</ol>
-<h2 id="Check-Network-Setting"><a href="#Check-Network-Setting" class="headerlink" title="Check Network Setting"></a>Check Network Setting</h2><ol>
-<li>最後回 Wallet 頁面，確認是否確實連上測試鏈。只要兩個紅框處分別呈現帳號名稱，及剛剛拿到的1個 Free Token，即為成功連結測試鏈。</li>
-</ol>
-<p><img src="https://i.imgur.com/XyWA4LK.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://a24230928.github.io/blogger/2020/05/11/EOS-Jungle2-0-Testnet-with-Scatter-Desktop/" data-id="ckt6tzy6w0000r0sv9tms5nuv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ERC-20-Token-Standard-簡介" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ERC-20-Token-Standard-簡介" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blogger/2020/05/11/ERC-20-Token-Standard-%E7%B0%A1%E4%BB%8B/" class="article-date">
   <time datetime="2020-05-11T01:33:25.000Z" itemprop="datePublished">2020-05-11</time>
@@ -153,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blogger/2020/05/11/ERC-20-Token-Standard-%E7%B0%A1%E4%BB%8B/">ERC-20 Token Standard 簡介</a>
+    <h1 class="article-title" itemprop="name">
+      ERC-20 Token Standard 簡介
     </h1>
   
 
@@ -195,11 +126,23 @@
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/blogger/2020/05/11/EOS-Jungle2-0-Testnet-with-Scatter-Desktop/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          EOS Jungle2.0 Testnet With Scatter Desktop
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
