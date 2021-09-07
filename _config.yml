@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Sun的學習筆記
-subtitle: '學什麼就寫什麼'
-description: '雜七雜八的學習筆記，學什麼就寫什麼'
-keywords: notes
+title: Sun 的學習筆記
+subtitle: Sun's note
+description: 紀錄學習與開發過程的研究議題及技術文章
+keywords:
 author: Sun
-language: zh-TW
-timezone: 'Asia/Taipei'
+language: zh-tw
+timezone: Asia/Taipei
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: icarus
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -101,9 +101,13 @@ deploy:
   type: git
   repo: https://github.com/a24230928/blogger
   branch: master
-  
- #Comments
- #disqus:
- # enable: true
- # shortname: Sun's Notes
- # count: true
+
+# Comments
+disqus:
+  enable: true
+  shortname: Sun's Notes
+  count: true
+
+# sitemap
+sitemap:
+  path: sitemap.xml
