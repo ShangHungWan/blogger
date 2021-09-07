@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://a24230928.github.io/blogger/2020/05/11/ERC-20-Token-Standard-%E7%B0%A1%E4%BB%8B/</loc>
+    
+    <lastmod>2021-09-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://a24230928.github.io/blogger/2020/05/11/EOS-Jungle2-0-Testnet-with-Scatter-Desktop/</loc>
+    
+    <lastmod>2021-09-05</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>https://a24230928.github.io/blogger</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://a24230928.github.io/blogger/tags/ERC-20/</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://a24230928.github.io/blogger/tags/ERC-721/</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://a24230928.github.io/blogger/tags/Solidity/</loc>
+    <lastmod>2021-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+</urlset>
