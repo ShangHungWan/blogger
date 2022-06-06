@@ -2,9 +2,9 @@
 title: port swigger web security academy sql injection 2 - UNION attacks
 date: 2022-06-05 16:49:59
 tags:
-- web_security
-- sql_injection
-- port_swigger
+- web-security
+- sql-injection
+- port-swigger
 ---
 
 ## Introduction

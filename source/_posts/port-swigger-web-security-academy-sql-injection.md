@@ -2,9 +2,9 @@
 title: port swigger web security academy sql injection
 date: 2022-06-04 00:18:43
 tags: 
-- web_security
-- sql_injection
-- port_swigger
+- web-security
+- sql-injection
+- port-swigger
 ---
 
 ## Introduction

@@ -5,7 +5,7 @@ tags:
 - ctf
 - ais3
 - write-up
-- web
+- web-security
 ---
 
 ## Introduction
