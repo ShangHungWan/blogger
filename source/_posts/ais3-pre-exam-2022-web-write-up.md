@@ -590,7 +590,8 @@ redis_mode:standalone
 But when I tried to write file with redis, I found out some common commands were blocked.
 
 > Seems we need to change redis's data by SSRF to control input of `session.php` and exploiting unserialization vulnerabilities? but no time QQ
->> This is my guess during the exam, but I have to work in the 3rd day of exam. So unfortunately I'm not able to solve all web question, hope someday😥
+
+↑ This is my guess at the second day ended, but I have to work in the 3rd day of exam. So unfortunately I'm not able to solve all web question, maybe someday😥
 
 There is the [write-up](https://github.com/maple3142/My-CTF-Challenges/tree/master/AIS3%20Pre-exam%202022/Private%20Browsing) from the qeustion setter, seems really close to my assumption.
 
