@@ -27,8 +27,7 @@ CDN 的全名是 Content Delivery Network，中文通常翻成「內容傳遞網
 
 不對，是這張：
 
-![CDN vs single server](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/NCDN_-_CDN.svg/1280px-NCDN_-_CDN.svg.png)
-~source: wikipedia~
+![CDN vs single server(source: wikipedia)](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/NCDN_-_CDN.svg/1280px-NCDN_-_CDN.svg.png)
 
 左邊為單一節點模式（Single Server），右邊就是 CDN 的模式，因此 CDN 最直觀的價值就是讓連上你網站的使用者可以快速的得到他們想要的內容，而網站回應速度同時影響到 SEO、UX 等，也可以降低總體成本、防禦部分攻擊，所以可說是十分重要的，以下簡單比較一下雙方：
 
@@ -74,8 +73,7 @@ CDN 的全名是 Content Delivery Network，中文通常翻成「內容傳遞網
 - 字典檔掃描：有時網站會有一些 subdomain，而有可能因為成本考量，subdomain 並沒有託管在 CDN 上，而 subdomain 的 IP 可能會是與目標相近的 Server（甚至同一台），因此我們可以先用字典檔掃出 subdomain 再用旁敲側擊的方式攻入。可以利用一些別人寫好的腳本，例如 [Knockpy](https://github.com/guelfoweb/knock) 或是下面的 Sublist3r。
 - DNS 歷史紀錄：DNS 紀錄有時可以找到一些蛛絲馬跡，例如一開始可能是直接綁主機 IP，後來才綁在 CDN 上，我們一樣可以用一些線上工具掃出來，例如：[VirusTotal](https://www.virustotal.com/gui/home/url)。
 - X509v3 Subject Alternative Name(X509v3 SAN)：一種公鑰證書的擴充標準，總之可以在憑證裡面填寫一些備用名稱，包括 Email、IP、URI、DNS 等，所以在記錄裡面有機會看到 IP，一樣有線上工具：[crt.sh](https://crt.sh/)。
-![x509v3 SAN](https://upload.wikimedia.org/wikipedia/commons/d/d2/Ssl_com_ev_uc_certificate.jpg)
-~source: wikipedia~
+![x509v3 SAN(source: wikipedia)](https://upload.wikimedia.org/wikipedia/commons/d/d2/Ssl_com_ev_uc_certificate.jpg)
 - [BuiltWith](https://builtwith.com)：這個服務可以查詢一些網站的各項資訊，其中有一個地方可以查到 IP 的歷史紀錄，如下圖所示。
 ![BuiltWith](https://i.imgur.com/Qj2QgYQ.png)
 - [CloudFlair](https://github.com/christophetd/CloudFlair)：一個用 SSL 證書的資訊去尋找網站 IP 的 python 工具。（CF only）
@@ -105,4 +103,4 @@ IP 被揭露後，乍看不會有什麼嚴重的危害，但這的確是攻擊�
 
 ## 4. Summary
 
-這篇先簡單介紹了 CDN 的原理，以及如何使用一些簡單的工具、服務來確認、尋找隱藏在 CDN 背後的 Server IP，下一篇就會聚焦在實際攻擊及防禦的各種手法，有興趣的請移駕[下篇]()👍
+這篇先簡單介紹了 CDN 的原理，以及如何使用一些簡單的工具、服務來確認、尋找隱藏在 CDN 背後的 Server IP，下一篇就會聚焦在實際攻擊及防禦的各種手法，有興趣的請移駕[下篇](https://fongyehong.top/blog/2022/10/10/ais3-cdn-and-how-to-attack-it-2/)👍

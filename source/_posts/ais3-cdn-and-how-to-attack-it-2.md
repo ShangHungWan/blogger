@@ -7,6 +7,8 @@ tags:
 - cdn
 ---
 
+Note: 這篇是下篇，還沒看過[上篇](https://fongyehong.top/blog/2022/10/10/ais3-cdn-and-how-to-attack-it-1/)的可以先看一下再回來這篇！
+
 ## 1. How to Attack & Defend
 
 ### 1.1. Post Exploitation - CF-Connecting-IP
