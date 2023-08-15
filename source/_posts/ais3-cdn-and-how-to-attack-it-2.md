@@ -15,6 +15,8 @@ Note: 這篇是下篇，還沒看過[上篇](https://fongyehong.top/blog/2022/10
 
 還有另一種常見的問題，就是取得 IP 的實作方式所產生的漏洞。由於你的網站都是 CDN 的 Server 代替使用者送出請求，那你要怎麼取得使用者真實 IP 呢？這時 CDN 通常就會在 Request Header 中塞入一個自定義的 Header 來傳遞，原理與 Proxy 的 `X-Forwarded-For` Header 差不多（有興趣的話，推薦延伸閱讀：[如何正確的取得使用者 IP](https://devco.re/blog/2014/06/19/client-ip-detection)），例如 CF 就會使用 `CF-Connecting-IP` 這個 Header 來傳遞使用者 IP，我們就可以從這個 Header 中取得使用者的 IP。
 
+<!-- more -->
+
 #### 1.1.1. Post Exploitation
 
 在講這個攻擊方式前，我們先講一下什麼是 Post Exploitation，有人好像會翻成「後利用」或「後攻擊」，我個人不喜歡翻成中文，因為 SEO 問題，你用中文 Google 的話永遠都找不到你想要的文章 XDD，總之 Post Exploitation 就是在你攻擊成功目標後，後續進行的提權、擴散、深入、開後門之類的操作，這邊的情境就是在我們得知 IP 之後，就可以開始進行我們的 Post Exploitation 了。
@@ -174,8 +176,6 @@ Domain Fronting 就是可以利用修改 Host Header，來達成 Domain 與實�
 
 ![img](https://media.kasperskydaily.com/wp-content/uploads/sites/92/2019/04/08132118/domain-fronting-scheme.png)
 
-
-
 ### 1.6. HTTP Desync Request Smuggling
 
  這也是一個利用「不一致」所達成的攻擊手法，首先需要了解一下 HTTP 的持久連接（HTTP persistent connection）：
@@ -192,7 +192,7 @@ Domain Fronting 就是可以利用修改 Host Header，來達成 Domain 與實�
 
 一般封包的長度會以兩個 Header 來描述，分別是：
 
-1.  `Content-Length`：舊有描述方式，用於一次傳遞整個封包時。
+1. `Content-Length`：舊有描述方式，用於一次傳遞整個封包時。
 2. `Transfer-Encoding`：HTTP 1.1 引進，可以將封包切割成多個，較有彈性。
 
 這時可以想像以下幾種情況：
@@ -216,7 +216,7 @@ Domain Fronting 就是可以利用修改 Host Header，來達成 Domain 與實�
 
 打完發現這篇超長，只好分兩篇了😶。在這堂課學到蠻多 CDN 攻擊的知識，很多攻擊技巧也非常酷，讓我大開眼界 XD，沒想到這些很方便的功能或是服務可以被這樣利用。雖然很多攻擊技巧都是好幾年前的，大廠牌的 CDN 提供商也大部分都已經修正了，不過有些小型或是知名度較低的廠商可能就尚未修正或是修正的不完全，所以可能就會讓攻擊者有機可趁，因此選用服務商時還是盡量選用口碑好或大廠牌的，貴是有它的道理的（？）。
 
-##  3. References
+## 3. References
 
 1. [Bypassing CDN WAFs with alternate domain routing](https://blog.apnic.net/2022/05/19/bypassing-cdn-wafs-with-alternate-domain-routing/)
 2. [Using Page Rules to rewrite Host Headers - Cloudflare](https://support.cloudflare.com/hc/en-us/articles/206652947-Using-Page-Rules-to-rewrite-Host-Headers)

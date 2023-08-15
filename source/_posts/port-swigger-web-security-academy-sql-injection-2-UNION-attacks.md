@@ -19,7 +19,10 @@ When we could get responses of query, `UNION` can be used to retrieve more data 
 SELECT a, b FROM table1 UNION SELECT c, d FROM table2
 ```
 
+<!-- more -->
+
 And there are two requirements must be met:
+
 1. Two query must return the same number of columns.
 2. Two query must have compatible data types in each column.
 
@@ -45,6 +48,7 @@ If there is no error, we know the column number of the first query is at least 1
 ```
 
 Until we get some error such as:
+
 ```
 The ORDER BY position number 3 is out of range of the number of items in the select list.
 ```
@@ -58,9 +62,11 @@ Because we can directly `SELECT` value by `UNION`, we can try:
 ```sql
 ' UNION SELECT NULL--
 ```
+
 > But why `NULL`? Because we mentioned that `Two query must have compatible data types in each column.` before, and `NULL` is compatible with any type of data.
 
 And if your number of `NULL` is not same with the first query's column number, you will probably get some error like:
+
 ```
 All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists.
 ```
@@ -93,4 +99,4 @@ We can concatenate the values together to show multiple values in one column, fo
 
 ## References
 
-- https://portswigger.net/web-security/sql-injection/union-attacks
+- <https://portswigger.net/web-security/sql-injection/union-attacks>

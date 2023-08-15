@@ -4,7 +4,10 @@ date: 2020-05-11 09:38:04
 tags:
 - 
 ---
+
 此篇旨在紀錄筆者透過 Scatter 桌面版使用 Jungle2.0 Testnet的過程及教學
+
+<!-- more -->
 
 ## Generate key
 
@@ -23,7 +26,6 @@ tags:
 5. 按 Back 回到 Wallet的頁面 (步驟1.)，並將紅色框框中的 Public Key 複製下來
 ![](https://i.imgur.com/bgycJfo.png)
 
-
 ## Create an account
 
 1. [點此](https://monitor.jungletestnet.io/#account)註冊一個帳號
@@ -40,11 +42,11 @@ tags:
 1. 回到 Scatter，並點選 Networks > Add Custom Network
 ![](https://i.imgur.com/NLKUF1I.png)
 
-2.  - Name 中輸入一個可辨識的名稱
-	- Host 輸入 jungle2.cryptolions.io
-	- Protocol 為 https
-	- Port 為 443
-	- Chain ID 為 e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473
+2. - Name 中輸入一個可辨識的名稱
+ - Host 輸入 jungle2.cryptolions.io
+ - Protocol 為 https
+ - Port 為 443
+ - Chain ID 為 e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473
 最後按下 Add 即可
 ![](https://i.imgur.com/oUufXBu.png)
 
@@ -53,4 +55,3 @@ tags:
 1. 最後回 Wallet 頁面，確認是否確實連上測試鏈。只要兩個紅框處分別呈現帳號名稱，及剛剛拿到的1個 Free Token，即為成功連結測試鏈。
 
 ![](https://i.imgur.com/XyWA4LK.png)
-

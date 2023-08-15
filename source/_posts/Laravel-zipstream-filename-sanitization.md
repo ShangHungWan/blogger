@@ -10,6 +10,8 @@ tags:
 
 When I develop one of my cases, there is a requirement to generate a zip file. So I find a package [`laravel-zipstream`](https://github.com/stechstudio/laravel-zipstream) to do it.
 
+<!-- more -->
+
 ## Problem
 
 Everything is fine until my customer told me files should be placed in a specific path which contains chinese characters. (´;ω;`)
@@ -33,7 +35,8 @@ At begining, I thought it's some encoding problem. But I tried to change encodin
 
 So I went to looked up the source code, and found:
 
- https://github.com/stechstudio/laravel-zipstream/blob/master/src/Models/File.php
+ <https://github.com/stechstudio/laravel-zipstream/blob/master/src/Models/File.php>
+
 ```php=105
 public function getZipPath(): string
 {
@@ -76,5 +79,5 @@ If you're interested in it, you can find it [here](https://github.com/stechstudi
 
 ## Reference
 
-- https://github.com/stechstudio/laravel-zipstream
-- https://laravel.com/docs/9.x
+- <https://github.com/stechstudio/laravel-zipstream>
+- <https://laravel.com/docs/9.x>

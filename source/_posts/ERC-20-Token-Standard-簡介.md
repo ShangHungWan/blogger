@@ -13,7 +13,10 @@ tags:
 
 簡單來說，ERC20是「每個代幣都一樣」；而ERC721則是「每個代幣都有其獨特性」
 
+<!-- more -->
+
 ## Interface
+
 ```Solidity
 contract ERC20Interface {
     function totalSupply() public constant returns (uint);
@@ -48,13 +51,11 @@ uint8 public constant decimals = 18; // 18 is the most common number of decimal 
 5. approve(address A, uint num)，批准數量為num的Token轉移給A，需注意的是，這個function只是單純做「批准」這個動作，而沒有進行轉移。若需要轉移則要再呼叫transferFrom。
 6. transferFrom(address, address, uint)，將數量為num的Token由A轉移給B。
 
-
 ## 注意事項
 
 Solidity版本 >= 0.4.17
 
-
-## Ref.
+## Ref
 
 - [ERC20, ERC721比較](https://medium.com/7sevencoin/erc20%E5%92%8Cerc721%E4%B8%8D%E4%B8%80%E6%A8%A3%E5%9C%A8%E5%93%AA%E8%A3%A1-2e550bb0bea3)
 - [ERC-20標準doc](https://eips.ethereum.org/EIPS/eip-20)
