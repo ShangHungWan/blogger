@@ -13,7 +13,7 @@ timezone: Asia/Taipei
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://taiyou.tw/blog/
+url: https://taiyou.tw/blog
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -41,7 +41,7 @@ external_link:
     exclude: ""
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -111,6 +111,3 @@ disqus:
 # sitemap
 sitemap:
     path: sitemap.xml
-
-# assets for `hexo-image-link`
-hexo-asset-folder: true
