@@ -111,3 +111,6 @@ disqus:
 # sitemap
 sitemap:
     path: sitemap.xml
+
+# assets for `hexo-image-link`
+hexo-asset-folder: true
