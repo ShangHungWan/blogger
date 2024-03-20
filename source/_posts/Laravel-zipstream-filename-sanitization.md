@@ -2,8 +2,8 @@
 title: Laravel zipstream filename sanitization
 date: 2022-06-04 16:47:59
 tags:
-- laravel
-- laravel-zipstream
+- Laravel
+- Laravel zipstream
 ---
 
 ## Introduction

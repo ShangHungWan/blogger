@@ -2,10 +2,10 @@
 title: AIS3 pre-exam 2022 web write-up
 date: 2022-06-06 21:19:46
 tags:
-- ctf
-- ais3
+- CTF
+- AIS3
 - write-up
-- web-security
+- web security
 ---
 
 ## Introduction

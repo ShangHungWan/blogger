@@ -2,9 +2,9 @@
 title: AIS3 2022 — CDN 技術所帶來的攻擊面向（下）
 date: 2022-10-10 19:50:00
 tags:
-- ais3
-- web-security
-- cdn
+- AIS3
+- web security
+- CDN
 ---
 
 Note: 這篇是下篇，還沒看過[上篇](https://fongyehong.top/blog/2022/10/10/ais3-cdn-and-how-to-attack-it-1/)的可以先看一下再回來這篇！
