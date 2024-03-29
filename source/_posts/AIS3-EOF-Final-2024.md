@@ -16,7 +16,7 @@ tags:
 
 此次分隊大致是依照初賽名次依序選擇隊伍（還有其他規則，~~不過不是很重要~~），因此隊伍的組成只會有三種，親友團、大神團跟 Others，所以開賽前大家就
 
-![結果出爐.jpg](AIS3-EOF-Final-2024/discord1.png)
+![結果出爐.jpg](ais3-eof-final-2024/discord1.png)
 
 最後冠軍也確實是名次最高組成的那隊，不過大家主要比較想跟認識的一組，所以其實大部分人好像也沒那麼在乎實力是否真的平均。
 
@@ -81,7 +81,7 @@ KoH 基本上都是隊友負責的，所以基本上我只有大概確認每題�
 ### A&D
 
 昨天的那個 cookie deserialization 雖然好像是我們第一個開始打的，不過後續 payload 被抄走後我們也開始被打，所以 tyc4d 就先把我昨天寫好的 patch 補上，而後續他也持續在挖封包並上其他 patch，同時確保我們可以過 service check，這也讓我們有一段時間靠存活分跟些許的攻擊分就從 A&D 單題分數第七衝到第二的位置，不過想當然爾，我們的 patch 也很快就被別人抄走：
-![patch hash on scoreboard](AIS3-EOF-Final-2024/patch.png)
+![patch hash on scoreboard](ais3-eof-final-2024/patch.png)
 而且這還不是最多的，我記得最多的時候好像有 6 組左右都用我們的 patch XD
 
 這邊就是我的錯了😥我當下沒有提醒隊友要記得混淆，自己也沒找到其他新洞或繞掉自己的 patch（~~下次 patch 不能寫這麼好~~），不然這題應該要可以第一的。
@@ -90,7 +90,7 @@ KoH 基本上都是隊友負責的，所以基本上我只有大概確認每題�
 
 是說這次大家都很善良（？），或是大家都在忙其他題，感覺沒人弄一些比較有趣的玩法，連後門都沒放，導致大家抄作業抄得很開心 XD，放張 discord 上別人做的 meme：
 
-![patch meme](AIS3-EOF-Final-2024/patch_meme.png)
+![patch meme](ais3-eof-final-2024/patch_meme.png)
 
 賽後看 maple 釋出的 [source code](https://github.com/AIS3-EOF/2024-ad-hahamut-public)，其實很多洞都是老梗或是解過的，超級懊悔為什麼都沒找到QQ，不過我覺得 maple 的題目出得蠻好的一點是他蠻會藏洞的，很像是真實情況下開發者會因為疏忽或不熟寫出來的漏洞，~~不會像有的一眼看過去就看到很刻意的洞~~，是需要很細心 code review 過才能找到的。所以其實很多洞都沒人打，我猜大部分都沒人發現，而另外有趣的是，這題機器因為每 round 不會重置，所以其實可以 persist 去賺長期分數，但也沒人注意到 XD
 
