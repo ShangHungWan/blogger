@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Sun 的學習筆記
-subtitle: Sun's note
-description: 紀錄學習與開發過程的研究議題及技術文章
+title: Sun 的 Blog
+subtitle: Sun's blog
+description: 紀錄研究、技術、跟其他雜七雜八的文章
 keywords: security,backend,Sun,TaiYou,web-security
 author: Sun
 language: en
@@ -105,7 +105,7 @@ deploy:
 # Comments
 disqus:
     enable: true
-    shortname: Sun's Notes
+    shortname: Sun's Blog
     count: true
 
 # sitemap
