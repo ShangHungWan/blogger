@@ -2,7 +2,8 @@
 title: EOS Jungle2.0 Testnet with Scatter Desktop
 date: 2020-05-11 09:38:04
 tags:
-- 
+- eos
+- scatter
 ---
 
 此篇旨在紀錄筆者透過 Scatter 桌面版使用 Jungle2.0 Testnet的過程及教學

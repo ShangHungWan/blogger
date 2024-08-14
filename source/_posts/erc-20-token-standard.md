@@ -2,9 +2,8 @@
 title: ERC-20 Token Standard 簡介
 date: 2020-05-11 09:33:25
 tags: 
-- ERC-20
-- ERC-721
-- Solidity
+- erc
+- solidity
 ---
 
 ## ERC-20 與 ERC-721 比較

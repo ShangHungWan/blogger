@@ -2,9 +2,9 @@
 title: AIS3 2022 — CDN 技術所帶來的攻擊面向（上）
 date: 2022-10-10 19:42:00
 tags:
-- AIS3
+- ais3
 - web security
-- CDN
+- cdn
 ---
 
 ## 1. Introduction

@@ -2,7 +2,8 @@
 title: Laravel HTTP mock domain case-sensitive problem
 date: 2022-08-21 15:30:11
 tags:
-- Laravel
+- laravel
+- mocking
 ---
 
 ## Introduction

@@ -2,9 +2,9 @@
 title: AIS3 EOF Final 2024 遊記+心得
 date: 2024-02-10 20:05:51
 tags:
-- AIS3
+- ais3
 - web security
-- CTF
+- ctf
 - write-up
 ---
 
