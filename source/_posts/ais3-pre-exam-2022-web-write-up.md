@@ -1,16 +1,16 @@
 ---
-title: AIS3 pre-exam 2022 web write-up
+title: AIS3 pre-exam 2022 web write up
 date: 2022-06-06 21:19:46
 tags:
 - ctf
 - ais3
-- write-up
+- write up
 - web security
 ---
 
 ## Introduction
 
-This article is the write-up of 2022 AIS3 pre-exam. [AIS3](https://ais3.org/) is a security course held in Taiwan, and pre-exam is something like qualification test. This is my first time participate AIS3. Fortunately I passed the pre-exam, so maybe I will share some note or something after the course end(?).
+This article is the write up of 2022 AIS3 pre-exam. [AIS3](https://ais3.org/) is a security course held in Taiwan, and pre-exam is something like qualification test. This is my first time participate AIS3. Fortunately I passed the pre-exam, so maybe I will share some note or something after the course end(?).
 
 And I could only solve web question, so that's it :( Let's start.
 
@@ -600,7 +600,7 @@ But when I tried to write file with redis, I found out some common commands were
 
 ↑ This is my guess at the second day ended, but I have to work in the 3rd day of exam. So unfortunately I'm not able to solve all web question, maybe someday😥
 
-There is the [write-up](https://github.com/maple3142/My-CTF-Challenges/tree/master/AIS3%20Pre-exam%202022/Private%20Browsing) from the qeustion setter, seems really close to my assumption.
+There is the [write up](https://github.com/maple3142/My-CTF-Challenges/tree/master/AIS3%20Pre-exam%202022/Private%20Browsing) from the qeustion setter, seems really close to my assumption.
 
 ### Gallery
 
