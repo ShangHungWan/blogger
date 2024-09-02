@@ -1,13 +1,11 @@
 ---
-title: offsec-oswa-live-training
+title: 2024 OffSec Live Training 心得 - OSWA
 date: 2024-09-02 21:06:53
 tags:
 - oswa
 - offsec
 - web security
 ---
-
-# 2024 OffSec Live Training 心得 - OSWA
 
 ## Introduction
 
