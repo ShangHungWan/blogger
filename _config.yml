@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Sun 的 Blog
-subtitle: Sun's blog
+title: TaiYou 的 Blog
+subtitle: TaiYou blog
 description: 紀錄研究、技術、跟其他雜七雜八的文章
 keywords: security,backend,Sun,TaiYou,web-security
-author: Sun
+author: TaiYou
 language: en
 timezone: Asia/Taipei
 
