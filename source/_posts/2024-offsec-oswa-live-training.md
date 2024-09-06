@@ -1,5 +1,5 @@
 ---
-title: 2024 OffSec Live Training 心得 - OSWA
+title: 2024 OffSec x DEVCORE Live Training - OSWA
 date: 2024-09-02 21:06:53
 tags:
 - oswa
@@ -10,6 +10,10 @@ tags:
 ## Introduction
 
 上個禮拜剛參加了 OffSec 跟 DEVCORE 合辦的 Live Training，趁著記憶猶新趕快來寫一下課程本身的心得。這次聽說是首次 OffSec 在台灣舉辦的 Live Training，也因為這樣，這次的課程還有送半年的 Learn Unlimited，簡單來說就是教材＋考照吃到飽，而且原價超貴，原廠賣一年 5799 鎂🫠。所以這次打算在半年內拼三張證照（沒意外應該是 OSWA、OSWE、OSCP），直接回本👍，後面考過證照再來寫考照的心得，所以希望這系列有 Part 2、3、4 XD。
+
+附上參與證明：
+
+![certificate of completion](./2024-offsec-oswa-live-training/certificate.png)
 
 <!-- more -->
 
