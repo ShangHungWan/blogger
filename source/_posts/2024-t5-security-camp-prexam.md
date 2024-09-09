@@ -2,8 +2,8 @@
 title: TeamT5 Security Camp 2024 筆試 — 漏洞研究
 date: 2024-08-14 22:32:22
 tags:
-- write up
-- reproduce
+    - write up
+    - reproduce
 ---
 
 ## Introduction
@@ -18,42 +18,42 @@ tags:
 
 以下題組為對 Tenda 路由器和其一系列 [CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=tenda) 的研究，包含韌體的解包和逆向、遠程服務的模擬、漏洞的分析和復現等。研究的目標設備為 Tenda AC10 v1.0，韌體版本 V15.03.06.23，可以從[官方載點](https://www.tendacn.com/download/detail-3105.html)下載。請回答下列問題，並匯整於一份報告中。
 
-
-- 部份題目需要進行逆向分析並截圖，建議使用 IDA 或 Ghidra。
-- 需要實作的題目請額外附上原始檔或腳本，並說明執行的方式和環境 (例如: 需安裝的套件或作業系統等)，若不易說明可以直接給 Dockerfile。
-- 要分析的漏洞為 [CVE-2022-42168](https://nvd.nist.gov/vuln/detail/CVE-2022-42168) 和 [CVE-2023-37144](https://nvd.nist.gov/vuln/detail/CVE-2023-37144)，可以參考公開的分析文章。
-- 報告最後請附上參考資料連結
+-   部份題目需要進行逆向分析並截圖，建議使用 IDA 或 Ghidra。
+-   需要實作的題目請額外附上原始檔或腳本，並說明執行的方式和環境 (例如: 需安裝的套件或作業系統等)，若不易說明可以直接給 Dockerfile。
+-   要分析的漏洞為 [CVE-2022-42168](https://nvd.nist.gov/vuln/detail/CVE-2022-42168) 和 [CVE-2023-37144](https://nvd.nist.gov/vuln/detail/CVE-2023-37144)，可以參考公開的分析文章。
+-   報告最後請附上參考資料連結
 
 ### 1. 解包和逆向分析 (30%)
 
-* 1.1 韌體解包 (5%)
+-   1.1 韌體解包 (5%)
 
 下載該韌體檔 US_AC10V1.0RTL_V15.03.06.23_multi_TD01.bin，並解開內部包含的 squashfs 檔案系統，說明所用的工具和指令。
 
-* 1.2 Web 服務分析 (10%)
+-   1.2 Web 服務分析 (10%)
 
 找出負責響應 web 登入頁面/管理頁面 (下圖) 的服務和其主執行檔 (httpd)，並分析它的啟動流程，包含它和系統中其它服務 (daemon) 的執行順序或依賴關係、交互方式等。
-    
-* 1.3 漏洞和攻擊面分析 (15%)
+
+-   1.3 漏洞和攻擊面分析 (15%)
 
 自行查尋 CVE-2022-42168 和 CVE-2023-37144 的相關資訊，並在 httpd 中找出這兩個漏洞。請在逆向工具中截圖、給出漏洞所在的大概位址，並簡略說明這兩個漏洞的原因和觸發方式。例如: 需要送出的 HTTP request 為何? 是否需要多次交互?
 
 此外，說明其他可能的攻擊面，特別是 pre-auth 的部份，即不需先登入即可觸發的攻擊面。例如: 特定的路徑或是 httpd 中某些函式。
 
-
 ### 2. Web 服務模擬實作 (30%)
 
 使用 qemu-user 或 Qiling 等工具或框架，模擬運行上題中分析的 web 服務主程式 (httpd)。由於缺乏實際的硬體和 kernel，該 web 服務的主程式沒辦法完全直接執行，需要對該 binary 或相關的 shared library 進行修改。建議的方式為:
-- 編譯並掛載一個 .so 檔，覆蓋某些 shared library 函式。由於該系統中的 ld-uClibc.so.0 不支援 LD_PRELOAD，因此需要以替換 library 的方式掛載，或重新編譯 ldso (見 bonus-1)。附件中有預先編譯好的 ld-uClibc.so.0 和 Makefile 範例，可以直接修改使用。（==請詳見 [ldso_tools.tar.xz](https://drive.google.com/drive/u/0/folders/1JzyKAkR2uohsg_uajW5iWFzkUcBLv96a) 檔案==）
-- 直接對主程式或相關 library 進行 binary patch。
-- 若使用 Qiling，可以用 address hook 修改其行為。
+
+-   編譯並掛載一個 .so 檔，覆蓋某些 shared library 函式。由於該系統中的 ld-uClibc.so.0 不支援 LD_PRELOAD，因此需要以替換 library 的方式掛載，或重新編譯 ldso (見 bonus-1)。附件中有預先編譯好的 ld-uClibc.so.0 和 Makefile 範例，可以直接修改使用。（==請詳見 [ldso_tools.tar.xz](https://drive.google.com/drive/u/0/folders/1JzyKAkR2uohsg_uajW5iWFzkUcBLv96a) 檔案==）
+-   直接對主程式或相關 library 進行 binary patch。
+-   若使用 Qiling，可以用 address hook 修改其行為。
 
 提示:
-- 某些函式可以完全跳過 (直接返回常數)，會有部份功能受影響，但頁面顯示和有關前述 CVE 的部份還是可以運作
-- Web 服務實際上需要跟其它 daemon 互動，可以直接 patch 掉這部份 (也可以同時運行其它 daemon 的模擬，但難度較高)
-- 若使用 root 執行，需注意可能影響到真實系統。可以使用 unshare 或 chroot，或使用 docker 封裝整個環境。也可以修改 bind port (原為 80) 以避免 root 權限。
-- 執行的輸出應該會出現 `"webs: Listening for HTTP requests at address {ip}:{port}"` 字樣，且能以瀏覽器開啟。使用 curl 測試時注意可能有 redirect 和 set-cookie 要處理，使用 python requests 的 Session 會比較方便。
-- 由於預設為空白密碼，開啟時會跳過登入頁面直接顯示管理頁面。此為正常行為。
+
+-   某些函式可以完全跳過 (直接返回常數)，會有部份功能受影響，但頁面顯示和有關前述 CVE 的部份還是可以運作
+-   Web 服務實際上需要跟其它 daemon 互動，可以直接 patch 掉這部份 (也可以同時運行其它 daemon 的模擬，但難度較高)
+-   若使用 root 執行，需注意可能影響到真實系統。可以使用 unshare 或 chroot，或使用 docker 封裝整個環境。也可以修改 bind port (原為 80) 以避免 root 權限。
+-   執行的輸出應該會出現 `"webs: Listening for HTTP requests at address {ip}:{port}"` 字樣，且能以瀏覽器開啟。使用 curl 測試時注意可能有 redirect 和 set-cookie 要處理，使用 python requests 的 Session 會比較方便。
+-   由於預設為空白密碼，開啟時會跳過登入頁面直接顯示管理頁面。此為正常行為。
 
 Bonus-1 (+10%)
 
@@ -64,8 +64,9 @@ Bonus-2 (+10%)
 使模擬的 web 服務需要登入。瀏覽器首次開啟時會顯示登入頁面，輸入正確密碼後才進入管理頁面。此外，請給出能以正確帳號密碼登入的測試腳本。
 
 提示:
-- 較容易實作的方式是 patch/hook httpd 取得帳密設定的程式邏輯，直接回傳固定的 username 和 password hash。
-- 正確的 hash 值可以分析 binary 後計算或直接 sniff web request 來取得。
+
+-   較容易實作的方式是 patch/hook httpd 取得帳密設定的程式邏輯，直接回傳固定的 username 和 password hash。
+-   正確的 hash 值可以分析 binary 後計算或直接 sniff web request 來取得。
 
 ### 3. 漏洞利用實作 (40%)
 
@@ -75,20 +76,19 @@ Bonus-2 (+10%)
 
 撰寫一份 CVE-2023-37144 的概念驗證腳本或程式 (PoC):
 
-- 請選擇能「遠端」驗證是否執行成功的 shell command(s)，並透過該漏洞來執行。
-- 可以假設已知登入帳密或不需登入。
-- 如果可行，使用前面完成的 web 服務模擬，來進行 demo，包含前述遠端驗證的部份。
-
+-   請選擇能「遠端」驗證是否執行成功的 shell command(s)，並透過該漏洞來執行。
+-   可以假設已知登入帳密或不需登入。
+-   如果可行，使用前面完成的 web 服務模擬，來進行 demo，包含前述遠端驗證的部份。
 
 #### 3.2 Exploit CVE-2022-42168 (25%)
 
 撰寫一份 CVE-2022-42168 的利用腳本或程式 (exploit):
 
-- 需要能執行任意 shell command (RCE)。
-- 可以假設已知登入帳密或不需登入。
-- 嘗試只使用 binary 中的 ROP gadgets，即: 假設 shared library、stack、heap 等會受 ASLR 影響，只使用具固定位址的 gadgets。
-- 如果可行，使用前面完成的 web 服務模擬，來進行 demo。
-    
+-   需要能執行任意 shell command (RCE)。
+-   可以假設已知登入帳密或不需登入。
+-   嘗試只使用 binary 中的 ROP gadgets，即: 假設 shared library、stack、heap 等會受 ASLR 影響，只使用具固定位址的 gadgets。
+-   如果可行，使用前面完成的 web 服務模擬，來進行 demo。
+
 Bonus-3 (+10%)
 
 上述的漏洞都需要先登入才能觸發，因此只是 post-auth，實際上的影響並不大。但只要有能取得密碼或繞過登入驗證的漏洞就可以串接成 pre-auth RCE。已知此韌體版本存在能繞過登入驗證的 CVE 漏洞，請嘗試找到它並將上面的 PoC/exploit 實作為 pre-auth RCE。
@@ -106,7 +106,7 @@ Bonus-3 (+10%)
 首先用 binwalk 就可以簡單解出 filesystem：
 
 ```shell!
-$ binwalk US_AC10V1.0RTL_V15.03.06.23_multi_TD01.bin -e 
+$ binwalk US_AC10V1.0RTL_V15.03.06.23_multi_TD01.bin -e
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
 10328         0x2858          LZMA compressed data, properties: 0x5D, dictionary size: 8388608 bytes, uncompressed size: 7070932 bytes
@@ -130,15 +130,15 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 再來，我們也可從名稱猜出以下這些都是相依的 daemon：
 
-- `bin/dhcpcd`
-- `bin/dttpd`
-- `bin/l2tpd`
-- `bin/miniupnpd`
-- `bin/p910nd`
-- `bin/pppd`
-- `bin/pptpd`
-- `bin/wscd`
-- `bin/xl2tpd`
+-   `bin/dhcpcd`
+-   `bin/dttpd`
+-   `bin/l2tpd`
+-   `bin/miniupnpd`
+-   `bin/p910nd`
+-   `bin/pppd`
+-   `bin/pptpd`
+-   `bin/wscd`
+-   `bin/xl2tpd`
 
 ### 1.3 漏洞和攻擊面分析
 
@@ -151,7 +151,6 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 接著確認一下 `mib_buf` 的長度，僅為 0x80，因此可以看出這是一個 stack overflow 的漏洞。
 
 ![mib_buf](./2024-t5-security-camp-prexam/)
-
 
 #### CVE-2023-37144
 
@@ -172,7 +171,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 先嘗試把 httpd 跑起來看看：
 
 ```
-$ sudo chroot ./ ./qemu-mipsel-static ./bin/httpd 
+$ sudo chroot ./ ./qemu-mipsel-static ./bin/httpd
 init_core_dump 1917: rlim_cur = 0, rlim_max = 0
 init_core_dump 1926: open core dump success
 /bin/sh: can't create /proc/sys/kernel/core_pattern: nonexistent directory
@@ -181,7 +180,7 @@ init_core_dump 1935: rlim_cur = 5242880, rlim_max = 5242880
 
 Yes:
 
-      ****** WeLoveLinux****** 
+      ****** WeLoveLinux******
 
  Welcome to ...
 Read hw setting header failed!
@@ -212,7 +211,7 @@ init_core_dump 1935: rlim_cur = 5242880, rlim_max = 5242880
 
 Yes:
 
-      ****** WeLoveLinux****** 
+      ****** WeLoveLinux******
 
  Welcome to ...
 Read hw setting header failed!
@@ -256,7 +255,7 @@ $ sudo ifconfig br0 192.168.88.131/24
 
 ![check_network](./2024-t5-security-camp-prexam/check_network.png)
 
-Patch 完就可以看到正常執行，並且也 listen 在正確的 IP 上了👍
+Patch 完就可以看到正常執行，並且也 listen 在正確的 IP 上了 👍
 
 ![success](./2024-t5-security-camp-prexam/success.png)
 
@@ -296,7 +295,7 @@ context.log_level = 'error'
 
 HOST = sys.argv[1]
 PORT = 80
-PATH = 'GET /goform/WriteFacMac?a=img/main-logo.png' 
+PATH = 'GET /goform/WriteFacMac?a=img/main-logo.png'
 
 if len(sys.argv) < 2 or len(sys.argv) > 3:
     print(f"Usage: {sys.argv[0]} <HOST> [PORT]")
@@ -417,7 +416,6 @@ Cache-Control: no-cache
 參考 [2.] 的報告，由於 `R7WebsSecurityHandler()` 這裡的邏輯有漏洞，可以簡單地繞過驗證。從下圖中可以看出，router handler 的檢查是只要在 url 裡發現有 `img/main-logo.png` 的字串，不管在哪個位置都會略過登入的驗證，因此我們只要構造類似 `http://{server}/some/login/required/path?a=img/main-logo.png` 的封包，就可以在不影響我們原有的 POC 情況下直接達成 Pre-auth RCE。
 
 ![R7WebsSecurityHandler](./2024-t5-security-camp-prexam/R7WebsSecurityHandler.png)
-
 
 ## Ref.
 

