@@ -9,7 +9,7 @@ tags:
 
 ## Introduction
 
-這篇文章算是第二集，如果沒有看過上集的可以點 [2024 OffSec x DEVCORE Live Training － OSWA](./2024/09/02/2024-offsec-oswa-live-training/)。
+這篇文章算是第二集，如果沒有看過上集的可以點 [2024 OffSec x DEVCORE Live Training － OSWA](/blog/2024/09/02/2024-offsec-oswa-live-training/)。
 
 雖然在上課時就約好考試了，而且 lab 跟課程內容大致都沒有問題，但第一次考試還是有點緊張，很怕一題沒通靈出來就要全部重來 🫠 還好最後還是順利通過，以下就簡單分享一下大致的過程以及心得。
 
