@@ -105,8 +105,8 @@ deploy:
 # Comments
 disqus:
     enable: true
-    shortname: Sun's Blog
     count: true
+disqus_shortname: taiyoublog
 
 # sitemap
 sitemap:
